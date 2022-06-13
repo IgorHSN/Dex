@@ -1,5 +1,4 @@
 import React from "react";
-import { Fragment } from "react";
 import './atributos.css';
 
 const tipo = props =>{

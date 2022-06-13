@@ -10,22 +10,21 @@
     display: table-row;
   }
   .divTableHeading {
-    background-color: #eee;
+  
     display: table-header-group;
   }
   .divTableCell,
   .divTableHead {
-    border: 1px solid #999999;
+    border: 1px solid #f0e9e946;
     display: table-cell;
     padding: 3px 10px;
   }
   .divTableHeading {
-    background-color: #eee;
+
     display: table-header-group;
     font-weight: bold;
   }
   .divTableFoot {
-    background-color: #eee;
     display: table-footer-group;
     font-weight: bold;
   }
@@ -39,8 +38,11 @@
   
   .container {
     display: flex;
-    opacity: 0.9;
-    background-color: whitesmoke;
+    border-radius: 25px;
+    margin-left: 750px;
+    margin-right: 750px;
+
+
     justify-content: center;
   }
   

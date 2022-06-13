@@ -9,18 +9,23 @@ const App = () => {
   const [pokemon, setPokemon] = useState("");
   const [pokemonData, setPokemonData] = useState([]);
   const [pokemonType, setPokemonType] = useState("");
+  const [type, setTypePokemon] = useState("");
+  const [typeData, setTypeData] = useState([]);
 
   //UseState guarda o ultimo estado que foi inserido na variavel e sendo possivel ser trocado de forma dinamica.
 
 
   const handleChange = (e) => {
     setPokemon(e.target.value.toLowerCase());
+    setTypePokemon(e.target.value.toLowerCase());
+    
   };
   // quando eu escrevo o nome do pokemon essa função é chamada no input setando o nome do pokemon no useState e troca a fonte para o lowercase porque se o nome do poke for escrito com letras maiusculas  da erro na request
 
   const handleSubmit = (e) => {
     e.preventDefault();
     getPokemon();
+
   };
   const getPokemon = async () => {
     const toArray = [];
@@ -30,18 +35,22 @@ const App = () => {
       toArray.push(res.data);
       setPokemonType(res.data.types[0].type.name);
       setPokemonData(toArray);
+      
+
+      console.log(pokemon)
+
     } catch (e) {
       console.log(e);
     }
   };
 
-
+ 
   return (
 
     <div className="App">
       <form onSubmit={handleSubmit}>
         <label>
-          <input
+          <input id="searchBar"
             type="text"
             onChange={handleChange}
             placeholder="Coloque nome ou id"
@@ -52,7 +61,7 @@ const App = () => {
       {pokemonData.map((data) => {
         return (
           <div className="container">
-            <img src={data.sprites["front_default"]} />
+            <img src={data.sprites["front_default"]} alt="pokeimagem" />
             <div className="divTable">
               <div className="divTableBody">
                 <Tipo tipo={pokemonType} className="divTableCell"></Tipo>
@@ -63,6 +72,41 @@ const App = () => {
           </div>
         );
       })}
+
+      {typeData.map((data) => {
+
+        return(
+          <div className="container">
+
+          <div className="divTableBody">
+
+          
+
+
+          </div>
+          </div>
+        )
+
+      }
+    
+      )}
+
+
+
+
+
+
+
+
+   
+
+    
+
+
+
+
+
+      
     </div>
   );
 };
@@ -74,26 +118,3 @@ export default App;
 
 
 
-
-
-
-
-// const toArray = [];
-// try {
-//   const url = `https://pokeapi.co/api/v2/pokemon/${pokemon}`;
-//   const pokeDesc = `https://pokeapi.co/api/v2/ability/${pokemon}`;
-
-//   const resPokemon = await axios.get(url);
-//   const resPokemonEtc = await axios.get(pokeDesc);
-
-//   axios.all([resPokemon, resPokemonEtc]).then(
-//     axios.spread((...allData) => {
-//       console.log(allData);
-//     })
-//   );
-//   // console.log(res);
-//   toArray.push(res.data);
-//   setPokemonData(toArray);
-// } catch (e) {
-//   console.log(e);
-// }
