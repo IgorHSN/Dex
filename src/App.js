@@ -6,8 +6,6 @@ import Altura from "./components/altura";
 import Peso from "./components/peso";
 import Nome from "./components/nome";
 import Evolucao from "./components/evolucao";
-
-
 const App = () => {
   const [pokemon, setPokemon] = useState("");
   const [pokemonData, setPokemonData] = useState([]);
@@ -85,7 +83,7 @@ const App = () => {
                 <Altura altura={Math.round(data.height * 3.9)} ></Altura>
                 <Peso peso={Math.round(data.weight / 4.3)}></Peso>
                 <Tipo tipo={pokemonType} className="container-tipo" ></Tipo>
-                <Evolucao evolve={data.chain.species.nome}></Evolucao>
+                <Evolucao ></Evolucao>
               </div>
             </div>
           </div>
