@@ -1,3 +1,4 @@
+import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 import React, { useState } from "react";
 import "./App.css";
 import axios from "axios";
@@ -5,6 +6,7 @@ import Tipo from "./components/tipo";
 import Altura from "./components/altura";
 import Peso from "./components/peso";
 import Nome from "./components/nome";
+import evolucao from './pages/evolucao';
 
 const App = () => {
   const [pokemon, setPokemon] = useState("");
