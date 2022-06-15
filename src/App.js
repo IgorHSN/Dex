@@ -1,4 +1,3 @@
-import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 import React, { useState } from "react";
 import "./App.css";
 import axios from "axios";
@@ -6,7 +5,7 @@ import Tipo from "./components/tipo";
 import Altura from "./components/altura";
 import Peso from "./components/peso";
 import Nome from "./components/nome";
-import evolucao from './pages/evolucao';
+
 
 const App = () => {
   const [pokemon, setPokemon] = useState("");
@@ -14,6 +13,8 @@ const App = () => {
   const [pokemonType, setPokemonType] = useState("");
   const [type, setTypePokemon] = useState("");
   const [typeData, setTypeData] = useState([]);
+  const [showElement, setShowElement] = useState(false)
+  const showOrHide = () => setShowElement(true)
 
   //UseState guarda o ultimo estado que foi inserido na variavel e sendo possivel ser trocado de forma dinamica.
 
@@ -71,42 +72,15 @@ const App = () => {
                 <Altura altura={Math.round(data.height * 3.9)} ></Altura>
                 <Peso peso={Math.round(data.weight / 4.3)}></Peso>
                 <Tipo tipo={pokemonType} className="container-tipo" ></Tipo>
-                <Router>
-                  <Link to="/evolucao">
-                    <button type="button">evoluções</button>
-                  </Link>
-                  <Switch>
-                    <Route exact path="/evolucao">
-                      <Evolucao />
-                    </Route>
-                  </Switch>
-                </Router>
+                <div>
+                  <button id="evolucao" onClick={showOrHide}>Evoluções</button>
+                  { showElement ? <img src="https://png.pngtree.com/png-vector/20190223/ourmid/pngtree-down-glyph-black-icon-png-image_691473.jpg"></img> : null }
+                </div>
               </div>
             </div>
           </div>
         );
-      })}
-
-      
-    
-      
-
-
-
-
-
-
-
-
-   
-
-    
-
-
-
-
-
-      
+      })}   
     </div>
   );
 };
