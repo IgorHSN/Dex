@@ -4,6 +4,7 @@ import axios from "axios";
 import Tipo from "./components/tipo";
 import Altura from "./components/altura";
 import Peso from "./components/peso";
+import Nome from "./components/nome";
 
 const App = () => {
   const [pokemon, setPokemon] = useState("");
@@ -67,29 +68,16 @@ const App = () => {
                 <Tipo tipo={pokemonType} className="divTableCell"></Tipo>
                 <Altura altura={Math.round(data.height * 3.9)} ></Altura>
                 <Peso peso={Math.round(data.weight / 4.3)}></Peso>
+                <Nome nome={data.name}></Nome>
               </div>
             </div>
           </div>
         );
       })}
 
-      {typeData.map((data) => {
-
-        return(
-          <div className="container">
-
-          <div className="divTableBody">
-
-          
-
-
-          </div>
-          </div>
-        )
-
-      }
+      
     
-      )}
+      
 
 
 
