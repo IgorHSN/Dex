@@ -5,6 +5,7 @@ import Tipo from "./components/tipo";
 import Altura from "./components/altura";
 import Peso from "./components/peso";
 import Nome from "./components/nome";
+import Evolucao from "./components/evolucao";
 
 
 const App = () => {
@@ -13,8 +14,7 @@ const App = () => {
   const [pokemonType, setPokemonType] = useState("");
   const [type, setTypePokemon] = useState("");
   const [typeData, setTypeData] = useState([]);
-  const [showElement, setShowElement] = useState(false)
-  const showOrHide = () => setShowElement(true)
+  const [pokemonEvolution, setPokemonEvolution] = useState([]);
 
   //UseState guarda o ultimo estado que foi inserido na variavel e sendo possivel ser trocado de forma dinamica.
 
@@ -48,6 +48,19 @@ const App = () => {
     }
   };
 
+  const getEvolution = async () => {
+    const toArray = [];
+    try {
+      const url = `https://pokeapi.co/api/v2/evolution-chain/${pokemon}`;
+      const res = await axios.get(url);
+      toArray.push(res.data);
+      setPokemonEvolution(res.data.chain.species.nome);
+
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
  
   return (
 
@@ -72,10 +85,7 @@ const App = () => {
                 <Altura altura={Math.round(data.height * 3.9)} ></Altura>
                 <Peso peso={Math.round(data.weight / 4.3)}></Peso>
                 <Tipo tipo={pokemonType} className="container-tipo" ></Tipo>
-                <div>
-                  <button id="evolucao" onClick={showOrHide}>Evoluções</button>
-                  { showElement ? <img src="https://png.pngtree.com/png-vector/20190223/ourmid/pngtree-down-glyph-black-icon-png-image_691473.jpg"></img> : null }
-                </div>
+                <Evolucao evolve={data.chain.species.nome}></Evolucao>
               </div>
             </div>
           </div>
