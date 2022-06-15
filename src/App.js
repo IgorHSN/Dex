@@ -69,7 +69,16 @@ const App = () => {
                 <Altura altura={Math.round(data.height * 3.9)} ></Altura>
                 <Peso peso={Math.round(data.weight / 4.3)}></Peso>
                 <Tipo tipo={pokemonType} className="container-tipo" ></Tipo>
-                <a className="btn-evolution" src="public/index.html"><button id="evolucao" type="button">Evoluções</button></a>
+                <Router>
+                  <Link to="/evolucao">
+                    <button type="button">evoluções</button>
+                  </Link>
+                  <Switch>
+                    <Route exact path="/evolucao">
+                      <Evolucao />
+                    </Route>
+                  </Switch>
+                </Router>
               </div>
             </div>
           </div>
