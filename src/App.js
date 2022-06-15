@@ -65,10 +65,11 @@ const App = () => {
             <img src={data.sprites["front_default"]} alt="pokeimagem" />
             <div className="divTable">
               <div className="divTableBody">
-                <Tipo tipo={pokemonType} className="divTableCell"></Tipo>
+                <Nome nome={data.name}></Nome>
                 <Altura altura={Math.round(data.height * 3.9)} ></Altura>
                 <Peso peso={Math.round(data.weight / 4.3)}></Peso>
-                <Nome nome={data.name}></Nome>
+                <Tipo tipo={pokemonType} className="container-tipo" ></Tipo>
+                <a className="btn-evolution" src="public/index.html"><button id="evolucao" type="button">Evoluções</button></a>
               </div>
             </div>
           </div>
